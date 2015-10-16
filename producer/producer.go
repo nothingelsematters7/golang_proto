@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/nothingelsematters7/golang_rabbit/config"
 	"github.com/streadway/amqp"
 )
 
@@ -15,7 +16,8 @@ func failOnError(err error, msg string) {
 }
 
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/%2F")
+	log.Printf("AMQP URL: %s", config.Conf.AMQPUrl())
+	conn, err := amqp.Dial(config.Conf.AMQPUrl())
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 

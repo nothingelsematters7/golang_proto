@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/nothingelsematters7/golang_rabbit/config"
 	"log"
 
+	"github.com/nothingelsematters7/golang_rabbit/config"
 	"github.com/streadway/amqp"
 )
 
