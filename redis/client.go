@@ -24,6 +24,8 @@ func main() {
 	err = client.Set("key", 123, 0).Err()
 	utils.FailOnError(err, "Cannot set key to value in Redis")
 
+	client.IncrBy("key", 256)
+
 	val, err := client.Get("key").Result()
 	utils.FailOnError(err, "Cannot read key from Redis")
 	fmt.Println("key", val)
