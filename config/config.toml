@@ -6,7 +6,7 @@ AMQP_PORT = 5672
 AMQP_VHOST = "/%2F"
 
 # Redis settings
-REDIS_HOST = "127.0.0.1"
+REDIS_HOST = "localhost"
 REDIS_PASS = ""
 REDIS_PORT = 6379
 REDIS_DB = 0

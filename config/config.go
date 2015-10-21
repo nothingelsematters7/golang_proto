@@ -18,7 +18,7 @@ type Config struct {
 	REDIS_HOST string
 	REDIS_PASS string
 	REDIS_PORT int
-	REDIS_DB   int
+	REDIS_DB   int64
 }
 
 // AMQPUrl returns AMQP URL for connecting to Rabbit MQ
