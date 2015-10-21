@@ -5,3 +5,8 @@ Golang prototype for working with RabbitMQ, Redis etc.
 * RabbitMQ
 * Redis
 * TOML config files
+
+## Dependencies:
+* github.com/BurntSushi/toml
+* github.com/streadway/amqp
+* gopkg.in/redis.v3
