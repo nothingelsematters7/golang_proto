@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/nothingelsematters7/golang_rabbit/config"
-	"github.com/nothingelsematters7/golang_rabbit/utils"
+	"github.com/nothingelsematters7/golang_proto/config"
+	"github.com/nothingelsematters7/golang_proto/utils"
 	"github.com/streadway/amqp"
 )
 
