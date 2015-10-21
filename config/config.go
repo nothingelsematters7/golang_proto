@@ -7,19 +7,25 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-// Config contains info about for connecting to RabbitMQ
+// Config contains global settings
 type Config struct {
-	Host  string
-	User  string
-	Pass  string
-	Vhost string
-	Port  int
+	AMQP_HOST  string
+	AMQP_USER  string
+	AMQP_PASS  string
+	AMQP_VHOST string
+	AMQP_PORT  int
+
+	REDIS_HOST string
+	REDIS_PASS string
+	REDIS_PORT int
+	REDIS_DB   int
 }
 
 // AMQPUrl returns AMQP URL for connecting to Rabbit MQ
 func (conf Config) AMQPUrl() string {
-	return fmt.Sprintf("amqp://%s:%s@%s:%d%s", conf.User, conf.Pass, conf.Host,
-		conf.Port, conf.Vhost)
+	return fmt.Sprintf(
+		"amqp://%s:%s@%s:%d%s", conf.AMQP_USER, conf.AMQP_PASS, conf.AMQP_HOST,
+		conf.AMQP_PORT, conf.AMQP_VHOST)
 }
 
 // Conf variable is global config instance
