@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 
 	"github.com/nothingelsematters7/golang_rabbit/config"
+	"github.com/nothingelsematters7/golang_rabbit/utils"
 	"github.com/streadway/amqp"
 )
 
@@ -15,21 +15,14 @@ type Message struct {
 	Data map[string]string
 }
 
-func failOnError(err error, msg string) {
-	if err != nil {
-		log.Fatalf("%s: %s", msg, err)
-		panic(fmt.Sprintf("%s: %s", msg, err))
-	}
-}
-
 func main() {
 	log.Printf("AMQP URL: %s", config.Conf.AMQPUrl())
 	conn, err := amqp.Dial(config.Conf.AMQPUrl())
-	failOnError(err, "Failed to connect to RabbitMQ")
+	utils.FailOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 
 	ch, err := conn.Channel()
-	failOnError(err, "Failed to open a channel")
+	utils.FailOnError(err, "Failed to open a channel")
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
@@ -40,7 +33,7 @@ func main() {
 		false,   // no-wait
 		nil,     // arguments
 	)
-	failOnError(err, "Failed to declare a queue")
+	utils.FailOnError(err, "Failed to declare a queue")
 
 	data := map[string]string{
 		"order_id": "1",
@@ -48,7 +41,7 @@ func main() {
 
 	message := Message{"Update", data}
 	body, err := json.Marshal(message)
-	failOnError(err, "Failed to dump message to json")
+	utils.FailOnError(err, "Failed to dump message to json")
 
 	err = ch.Publish(
 		"",     // exchange
@@ -60,5 +53,5 @@ func main() {
 			Body:        body,
 		})
 	log.Printf(" [x] Sent %s", body)
-	failOnError(err, "Failed to publish a message")
+	utils.FailOnError(err, "Failed to publish a message")
 }
