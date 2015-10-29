@@ -10,3 +10,9 @@ REDIS_HOST = "localhost"
 REDIS_PASS = ""
 REDIS_PORT = 6379
 REDIS_DB = 0
+
+# MySQL settings
+MYSQL_HOST = "localhost"
+MYSQL_USER = "wgnps"
+MYSQL_PASS = "wgnps"
+MYSQL_DATABASE = "orders"
