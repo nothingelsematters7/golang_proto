@@ -23,6 +23,8 @@ type Config struct {
 	MYSQL_USER     string
 	MYSQL_PASS     string
 	MYSQL_DATABASE string
+
+	OANDA_KEY      string
 }
 
 // AMQPUrl returns AMQP URL for connecting to Rabbit MQ

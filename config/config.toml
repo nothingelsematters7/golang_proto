@@ -12,7 +12,9 @@ REDIS_PORT = 6379
 REDIS_DB = 0
 
 # MySQL settings
-MYSQL_HOST = "localhost"
+MYSQL_HOST = "127.0.0.1"
 MYSQL_USER = "wgnps"
 MYSQL_PASS = "wgnps"
 MYSQL_DATABASE = "orders"
+
+OANDA_KEY = ""
